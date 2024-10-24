@@ -1,0 +1,141 @@
+header .con {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 50px;
+  gap: 70px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: white;
+  border-bottom: 1px solid #b9b9b9;
+}
+.con .left-row, .con .right-row
+{
+  display: flex;
+  gap:50px;
+  align-items: center;
+}
+
+.con .left-row a, .con .right-row a
+{
+  color: #FC819E;
+}
+.con .left-row div, .con .right-row div
+{
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.con a:hover{
+  text-decoration: none;
+}
+
+.con .right-row .a-js .relative{
+  position: relative;
+}
+
+.con .right-row .a-js .count{
+  position: absolute;
+  background: #FC819E;
+  color: white;
+  font-weight: 500;
+  padding: 2px 6px;
+  font-size: 13px;
+  border-radius: 20px;
+  top: -15px;
+  right: -8px;
+}
+
+.con .left-row h1
+{
+  font-size: 28px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #FC819E;
+}
+
+.con .left-row h1 span
+{
+  border: 6px solid rgb(245, 245, 67);
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  padding: 2px;
+}
+
+.con .left-row div, .con .right-row div,
+.con .right-row i{
+  cursor: pointer;
+  
+}
+
+
+
+
+.right-row .profile-logIn
+{
+  position: relative;
+}
+
+.right-row .profile-div
+{
+  position: absolute;
+  white-space: nowrap;
+  bottom: -80px;
+  left: -40px;
+  background: #FC819E;
+  width: 120px;
+  display: none;
+}
+
+.right-row .profile-div div
+{
+  font-size: 14px;
+  padding: 6px;
+  border-bottom: 1px solid black;
+}
+
+.profile-logIn .drop-down
+{
+  margin-left: 6px;
+}
+
+.right-row .profile-div a{
+  color: white;
+}
+
+
+/* Search bar styling */
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-left: 150px;  
+}
+
+.search-bar input[type="text"] {
+  padding: 10px 15px;
+  border: 2px solid #FEC7B4;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.search-bar button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 5px;
+}
+
+.search-bar button i {
+  color: #FEC7B4;
+  font-size: 18px;
+}
+
+/* Add hover effect on the search icon */
+.search-bar button:hover i {
+  color: pink;
+}

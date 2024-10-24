@@ -1,0 +1,259 @@
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main{
+    margin-top: 150px;
+}
+
+.content{
+    max-width: 1200px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.details .name{
+    font-size: 28px;
+    font-weight: 600;
+    color: #FC819E;
+    letter-spacing: 1px;
+    width: 80%;
+   
+}
+
+.grid .img-con{
+    box-shadow: -1px 2px 5px 0px rgba(0,0,0,0.42);
+-webkit-box-shadow: -1px 2px 5px 0px rgba(0,0,0,0.42);
+-moz-box-shadow: -1px 2px 5px 0px rgba(0,0,0,0.42);
+border-radius: 8px;
+height: 450px;
+}
+
+.grid .img-con img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.details .text .title{
+    color: #FC819E;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 6px;
+    
+}
+
+.details .center{
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid #969696;
+    margin-bottom: 20px;
+    padding-bottom: 6px;
+}
+
+.details .price{
+    font-size: 20px;
+    font-weight: 600;
+    color: #FC819E;
+
+}
+
+.details .text{
+    font-size: 16px;
+    font-weight: 300;
+    color: #797979;
+}
+
+.content .grid{
+    display: grid;
+    grid-template-columns: 1fr 600px;
+    gap: 100px;
+    align-items:center;
+    justify-content: space-between;
+}
+
+.cart-details .title{
+    border-bottom: none;
+    margin-bottom: 0;
+    font-size: 22px;
+}
+
+.cart-details input, .cart-details textarea{
+    width: 100%;
+    height: 36px;
+    border-radius: 6px;
+    padding: 0 8px;
+    border: 1px solid #FC819E;
+}
+
+.cart-details textarea {
+    height: 100px;
+}
+
+.cart-details .center input{
+    width: 30%;
+}
+
+.cart-details .center{
+    justify-content: start;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.cart-details .center button{
+    background-color: #FC819E;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.img-con-click .img-con{
+    height: 350px;
+    margin-bottom: 20px;
+}
+/* Container and Layout */
+.slide-div {
+    padding: 30px;
+    background-color: #f3f4f6;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-width: 1100px;
+    margin: 20px auto;
+}
+
+.feedback-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.feedbacks, .feedback-form {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.feedbacks:hover, .feedback-form:hover {
+    transform: translateY(-5px);
+}
+
+/* Titles */
+.title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #FC819E;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 10px;
+}
+
+/* Feedback Items */
+.feedback-item {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 20px 0;
+    transition: all 0.3s ease;
+}
+
+.feedback-item:hover {
+    background-color: #f9fafb;
+}
+
+.feedback-item:last-child {
+    border-bottom: none;
+}
+
+/* Name and Date */
+.name {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: #111827;
+}
+
+.date {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-left: 10px;
+}
+
+/* Feedback Text */
+.text {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+/* Feedback Form */
+.feedback-form .form-group {
+    margin-bottom: 20px;
+}
+
+.feedback-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.feedback-form textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #1f2937;
+    resize: none;
+    transition: border-color 0.3s ease;
+}
+
+.feedback-form textarea:focus {
+    border-color: #2563eb;
+    outline: none;
+}
+
+/* Submit Button */
+.feedback-form .button {
+    width: 100%;
+    padding: 12px;
+    background-color: #FC819E;
+    color: #fff;
+    font-size: 1.125rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.feedback-form .button:hover {
+    background-color: #d1657e;
+    transform: translateY(-3px);
+}
+
+.feedback-form .button:active {
+    background-color: #1e40af;
+    transform: translateY(0);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .feedback-container {
+        flex-direction: column;
+    }
+
+    .feedbacks, .feedback-form {
+        max-width: 100%;
+    }
+}

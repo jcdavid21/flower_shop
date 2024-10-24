@@ -1,0 +1,129 @@
+/*-----Footer-----*/
+.footer{
+    background-color: transparent;
+    padding: 70px 0;
+    border-top: 1px solid #FC819E;
+}
+.footer-container{
+    align-items: right;
+
+    max-width: 1170px;
+    margin: auto;
+    margin-top: -30px;
+    margin-bottom: -50px;
+       
+}
+ul{
+    list-style: none;
+}
+.footer-row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.footer-col{
+    text-align: left;
+
+    width: 25%;
+    padding: 0 15px;
+}
+.footer-col h4{
+    font-size: 18px;
+    color: black;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: bold;
+    position: relative;
+
+}
+.footer-col h4::before{
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    background-color: #FC819E;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+    
+}
+.footer-col ul li{
+    margin-bottom: 10px;
+    
+    
+}
+.footer-col ul li a{
+    
+    text-decoration: none;
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #fff;
+    font-weight: bold;
+    color: black;
+    display: block;
+    transition: all .3s ease;   
+ 
+}
+.footer-col ul li p{
+
+    font-size: 16px;
+    text-transform: capitalize;
+    color: black;
+    font-weight: bold;
+}
+ .footer-col ul li a:hover{
+    color: #FC819E;
+    padding-left: 10px;
+    
+ }
+ .footer hr{
+    border: none;
+    background: #b5b5b5;
+    height: 1px;
+    margin: 20 0px;
+}
+.copyright{
+    text-align: center;
+}
+/*-----Footer on smaller screen-----*/
+ @media(max-width: 700px){
+    .footer-col{
+        width: 50%;
+        margin-bottom: 30px;
+
+    }
+ }
+ @media(max-width: 500px){
+    .footer-col{
+        width: 100%;
+
+    }
+ }
+
+
+
+
+/* Style each social media icon */
+.social-media-icons li {
+    background-color: #f5f5f5; /* Light grey background */
+    border-radius: 50%; /* Make the background circular */
+    padding: 15px; /* Padding inside the circles */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+/* Icons styling */
+.social-media-icons li i {
+    font-size: 24px;
+    color: #6b6b6b; /* Dark grey icon color */
+}
+
+/* Hover effect for icons */
+.social-media-icons li:hover {
+    background-color: #f3b5c3; /* Pink hover color */
+}
+
+/* Style anchor tags to remove default underline */
+.social-media-icons li a {
+    text-decoration: none;
+}
