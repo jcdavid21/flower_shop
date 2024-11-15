@@ -70,20 +70,20 @@ require_once("../backend/config/config.php");
                                     <thead>
                                         <tr>
                                             <th>Order Id</th>
-                                            <th>Customer Name</th>
-                                            <th>Order Price</th>
-                                            <th>Order Quantity</th>
-                                            <th>Order Type</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Type</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Order Id</th>
-                                            <th>Customer Name</th>
-                                            <th>Order Price</th>
-                                            <th>Order Quantity</th>
-                                            <th>Order Type</th>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Type</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
