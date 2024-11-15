@@ -3,7 +3,6 @@
     require_once("../config/config.php");
 
     if(isset($_GET["prodId"])){
-        $user_id = $_SESSION["user_id"];
         $status_id = 5;
         $item_id = $_GET["prodId"];
 

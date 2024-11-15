@@ -8,7 +8,6 @@ $(document).ready(() => {
         const contactNo = $('#contact').val();
         const address = $('#address').val();
         const password = $('#password').val();
-        const role_id = $('#selectRole').val();
 
         // Validation functions
         function validateEmail(email) {
@@ -26,7 +25,7 @@ $(document).ready(() => {
             return contactPattern.test(contactNo);
         }
 
-        if ( fname && lname && email && contactNo && address && password && role_id) {
+        if ( fname && lname && email && contactNo && address && password) {
             if (!validatePassword(password)) {
                 Swal.fire({
                     title: "Invalid Password!",
@@ -62,7 +61,6 @@ $(document).ready(() => {
                 contactNo,
                 address,
                 password,
-                role_id
             };
 
             $.ajax({

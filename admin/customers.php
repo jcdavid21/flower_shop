@@ -18,125 +18,167 @@ require_once("../backend/config/config.php");
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Admin Panel</title>
-    <!-- DataTables -->
-    <link href="../plugins/dataTables.bootstrap5.min.css" rel="stylesheet" />
-    <link href="../plugins/responsive.bootstrap5.min.css" rel="stylesheet" />
-    <link href="../styles/bootstrap5-min.css" rel="stylesheet" />
-    <link href="../styles/card-general.css" rel="stylesheet" />
+    <!-- Custom fonts for this template -->
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <script src="../scripts/font-awesome.js"></script>
     <script src="../scripts/sweetalert2.js"></script>
-    <script
-      src="../scripts/font-awesome.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body class="sb-nav-fixed">
-    <!-- Navbar -->
-    <?php require_once("./navbar.php"); ?>
-    <!-- Sidebar -->
-    <div id="layoutSidenav">
-      <?php require_once("./sidebar.php"); ?>
-      <!-- Content -->
-      <div id="layoutSidenav_content">
-        <main>
-          <div class="container-fluid px-4">
-            <!-- Page indicator -->
-            <div class="img-con d-flex align-items-center justify-content-center" style="height: 200px;">
-                <img src="../assets/imgs/lugo.png" alt=""
-                style="height: 100%;">
-               </div>
-            <h1 class="mt-4" id="full_name"></h1>
-            <ol class="breadcrumb mb-4">
-              <li class="breadcrumb-item active">Accounts</li>
-            </ol>
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-              <div class="card mb-5">
-                    <div class="card-header bg-primary pt-3">
-                        <div class="text-center">
-                            <p class="card-title text-light">Account Details
+    <!-- Custom styles for this template -->
+    <link href="../styles/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  </head>
+  <body class="page-top">
+    
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <?php include "sidebar.php"; ?>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <?php include "navbar.php"; ?>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+                    <!-- DataTales Example -->
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Product Table</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Account Name</th>
+                                            <th>Account Contact</th>
+                                            <th>Account Address</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Account Name</th>
+                                            <th>Account Contact</th>
+                                            <th>Account Address</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <?php
+                                            $query = "SELECT ta.account_id, CONCAT(tc.first_name, ' ', tc.middle_name, ' ', tc.last_name) AS full_name, tc.contact, tc.address FROM tbl_account ta INNER JOIN tbl_account_details tc ON tc.account_id = ta.account_id WHERE ta.role_id = 1 AND ta.account_status_id = 1;";
+                                            $stmt = $conn->prepare($query);
+                                            $stmt->execute();
+                                            $result = $stmt->get_result();
+                                            while ($data = $result->fetch_assoc()) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $data['account_id'];?></td>
+                                            <td><?php echo $data['full_name'];?></td>
+                                            <td><?php echo $data['contact'];?></td>
+                                            <td><?php echo $data['address'];?></td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger deactivateResBtn" id="<?php echo $data["account_id"] ?>" >
+                                                <i class="fa-solid fa-user-xmark"  style="color: #fcfcfc;"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                            }
+                                        ?>
+                                        </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                      <table id="residenceAccounts" class="table table-striped nowrap" style="width:100%">
-                        <thead>
-                          <tr>
-                              <th>Account ID</th>
-                              <th>Name</th>
-                              <th>Contact</th>
-                              <th>Address</th>
-                              <th>Action</th>
 
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <?php
-                            $query = "SELECT ta.account_id, CONCAT(tc.first_name, ' ', tc.middle_name, ' ', tc.last_name) AS full_name, tc.contact, tc.address FROM tbl_account ta INNER JOIN tbl_account_details tc ON tc.account_id = ta.account_id WHERE ta.role_id = 1 AND ta.account_status_id = 1;";
-                            $stmt = $conn->prepare($query);
-                            $stmt->execute();
-                            $result = $stmt->get_result();
-                              while ($data = $result->fetch_assoc()) {
-                          ?>
-                          <tr>
-                            <td><?php echo $data['account_id'];?></td>
-                            <td><?php echo $data['full_name'];?></td>
-                            <td><?php echo $data['contact'];?></td>
-                            <td><?php echo $data['address'];?></td>
-                            <td>
-                                <button type="button" class="btn btn-danger deactivateResBtn" id="<?php echo $data["account_id"] ?>" >
-                                  <i class="fa-solid fa-down-long"  style="color: #fcfcfc;"></i>
-                                </button>
-                            </td>
-                          </tr>
-                          <?php
-                            }
-                          ?>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
+                </div>
+                <!-- /.container-fluid -->
+
             </div>
+            <!-- End of Main Content -->
 
-      </main>
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
     </div>
-  </div>
-  <script
-      src="../scripts/bootstrap.bundle.min.js"
-    ></script>
-    <script src="../scripts/jquery.js"></script>
-    <script src="../scripts/toggle.js"></script>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="logout.php">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../scripts/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../js/demo/datatables-demo.js"></script>
+    <script src="../jquery/sideBarProd.js"></script>
     <script src="../jquery/deactivate.js"></script>
-    <!-- DataTables Scripts -->
-    <script src="../plugins/js/jquery.dataTables.min.js"></script>
-    <script src="../plugins/js/dataTables.bootstrap5.min.js"></script>
-    <script src="../plugins/js/dataTables.responsive.min.js"></script>
-    <script src="../plugins/js/responsive.bootstrap5.min.js"></script>
+    <script src="../scripts/toggle.js"></script>
 
-    <!-- DataTables Buttons CSS -->
-    <link rel="stylesheet" href="../styles/dataTables.min.css">
 
-    <!-- DataTables Buttons JavaScript -->
-    <script src="../scripts/dataTables.js"></script>
-    <script src="../scripts/ajax.make.min.js"></script>
-    <script src="../scripts/ajax.fonts.js"></script>
-    <script src="../scripts/dtBtn.html5.js"></script>
-    <script>
-        function convertToLowercase(input) {
-            input.value = input.value.toLowerCase();
-        }
-    </script>
-    <!-- <script>
-      $(document).ready(function() {
-          $('#residenceAccounts').DataTable({
-              responsive: true,
-              order: [[0, 'desc']],
-          });
-      });
-</script> -->
-
-<!-- <script>
-    const full_name = document.getElementById('full_name');
-    const acc_data = JSON.parse(localStorage.getItem('adminDetails'))
-    full_name.innerText = 'Admin, ' + acc_data.full_name;
-  </script> -->
-<script src="../jquery/sideBarProd.js"></script>  
   </body>
 </html>

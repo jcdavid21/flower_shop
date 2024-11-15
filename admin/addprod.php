@@ -17,115 +17,166 @@ require_once("../backend/config/config.php");
     />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Admin Panel</title>
-    <!-- DataTables -->
-    <link href="../plugins/dataTables.bootstrap5.min.css" rel="stylesheet" />
-    <link href="../plugins/responsive.bootstrap5.min.css" rel="stylesheet" />
-    <link href="../styles/bootstrap5-min.css" rel="stylesheet" />
-    <link href="../styles/card-general.css" rel="stylesheet" />
+    <title>Add Product</title>
+    <!-- Custom fonts for this template -->
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <script src="../scripts/font-awesome.js"></script>
     <script src="../scripts/sweetalert2.js"></script>
-    <script
-      src="../scripts/font-awesome.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body class="sb-nav-fixed">
-    <!-- Navbar -->
-    <?php require_once("./navbar.php"); ?>
-    <!-- Sidebar -->
-    <div id="layoutSidenav">
-      <?php require_once("./sidebar.php"); ?>
-      <!-- Content -->
-      <div id="layoutSidenav_content">
-        <main>
-          <div class="container-fluid px-4">
-            <!-- Page indicator -->
-            <div class="img-con d-flex align-items-center justify-content-center" style="height: 150px;">
-                <img src="../assets/imgs/lugo.png" alt=""
-                style="height: 100%;">
-               </div>
-            <h1 class="mt-4" id="full_name"></h1>
-            <ol class="breadcrumb mb-4">
-              <li class="breadcrumb-item active">Add Product</li>
-            </ol>
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-                <div class="card mb-5">
-                    <div class="card-header bg-success pt-3">
-                        <div class="text-center">
-                            <p class="card-title text-light">Add Product <i class="fas fa-plus"></i></p>
+    <!-- Custom styles for this template -->
+    <link href="../styles/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  </head>
+  <body class="page-top">
+   
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <?php include "sidebar.php"; ?>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <?php include "navbar.php"; ?>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid px-4">
+                    <!-- Page indicator -->
+                    <h1 class="h3 mb-2 text-gray-800">Form</h1>
+                    <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item active">Add Product</li>
+                    </ol>
+
+                    <div class="card mb-5">
+                        <div class="card-body">
+                        <form class="row g-3" method="post" id="addProd">
+                                <div class="col-md-4">
+                                    <label for="prod_name" class="form-label">Product Name</label>
+                                    <input type="text" class="form-control" id="prod_name" >
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="prod_price" class="form-label">Product Price</label>
+                                    <input type="text" class="form-control" id="prod_price" oninput="validateNumberInput(this)">
+                                </div>
+
+                                <div class="col-md-4 mb-2">
+                                    <label for="prod_type" class="form-label">Product Type</label>
+                                    <select id="prod_type" class="form-control">
+                                        <option value="" disabled selected>Select Product</option>
+                                        <?php
+                                        $query = "SELECT * FROM tbl_product_type";
+                                        $stmt = $conn->prepare($query);
+                                        $stmt->execute();
+                                        $result = $stmt->get_result();
+                                        while($data = $result->fetch_assoc()){
+                                        ?>
+                                        <option value="<?php echo $data["prod_type_id"]; ?>">
+                                        <?php echo $data["prod_type_name"];  ?>    
+                                        </option>
+                                        <?php } ?>
+                                    </select>      
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="prod_stocks" class="form-label">Product Stocks</label>
+                                    <input type="text" class="form-control" id="prod_stocks" oninput="validateNumberInput(this)">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="prod_img" class="form-label">Product Image</label>
+                                    <input type="file" class="form-control" id="prod_img">
+                                </div>
+                                <div class="col-12 text-center mb-4 mt-5">
+                                    <button type="submit" id="submit" class="btn btn-primary btn-lg">Add Product</button>
+                                </div>
+
+                            </form>
                         </div>
                     </div>
-                    <div class="card-body">
-                    <form class="row g-3" method="post" id="addProd">
-                        <h5 class="text-center">Product Details</h5>
-                        <hr>
-                            <div class="col-md-4">
-                                <label for="prod_name" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="prod_name" >
-                            </div>
 
-                            <div class="col-md-4">
-                                <label for="prod_price" class="form-label">Product Price</label>
-                                <input type="text" class="form-control" id="prod_price" oninput="validateNumberInput(this)">
-                            </div>
-
-                            <div class="col-md-4 mb-2">
-                                <label for="prod_type" class="form-label">Product Type</label>
-                                <select id="prod_type" class="form-select">
-                                    <option value="" disabled selected>Select Product</option>
-                                    <?php
-                                      $query = "SELECT * FROM tbl_product_type";
-                                      $stmt = $conn->prepare($query);
-                                      $stmt->execute();
-                                      $result = $stmt->get_result();
-                                      while($data = $result->fetch_assoc()){
-                                    ?>
-                                    <option value="<?php echo $data["prod_type_id"]; ?>">
-                                      <?php echo $data["prod_type_name"];  ?>    
-                                    </option>
-                                    <?php } ?>
-                                </select>      
-                            </div>
-                            <div class="col-md-4">
-                                <label for="prod_stocks" class="form-label">Product Stocks</label>
-                                <input type="text" class="form-control" id="prod_stocks" oninput="validateNumberInput(this)">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="prod_img" class="form-label">Product Image</label>
-                                <input type="file" class="form-control" id="prod_img">
-                            </div>
-                            <div class="col-12 text-center mb-4 mt-5">
-                                <button type="submit" id="submit" class="btn btn-primary btn-lg">Add Product</button>
-                            </div>
-
-                        </form>
-                    </div>
                 </div>
+                <!-- /.container-fluid -->
 
             </div>
-      </main>
-    </div>
-  </div>
+            <!-- End of Main Content -->
 
-<script>
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="logout.php">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../scripts/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../js/demo/datatables-demo.js"></script>
+    <script src="../jquery/sideBarProd.js"></script>
+    <script src="../jquery/addprod.js"></script>
+    <script src="../scripts/toggle.js"></script>
+    <script>
 function validateNumberInput(input) {
     input.value = input.value.replace(/[^0-9]/g, '');
 }
 </script>
-  <script
-      src="../scripts/bootstrap.bundle.min.js"
-    ></script>
-    <script src="../scripts/jquery.js"></script>
-    <script src="../scripts/toggle.js"></script>
-    <script src="../jquery/addprod.js"></script>
-    <!-- DataTables Scripts -->
-    <script src="../plugins/js/jquery.dataTables.min.js"></script>
-    <script src="../plugins/js/dataTables.bootstrap5.min.js"></script>
-    <script src="../plugins/js/dataTables.responsive.min.js"></script>
-    <script src="../plugins/js/responsive.bootstrap5.min.js"></script>
 
-
-
-<script src="../jquery/sideBarProd.js"></script> 
   </body>
 </html>

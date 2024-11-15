@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 24, 2024 at 06:01 PM
+-- Generation Time: Nov 15, 2024 at 10:43 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -45,12 +45,12 @@ INSERT INTO `tbl_account` (`account_id`, `ac_email`, `ac_password`, `role_id`, `
 (3, 'johnerick@gmail.com', '$2y$10$OZIIZnjXfRrVNX5G389R3.emX0dGaTb35PIQAbOqKhEB6qYWnoAuC', 2, 1),
 (4, 'lugo@gmail.com', '$2y$10$m5gg4RhBizZnqOJXR6IFIemRMw/0bex4eY4mxCNpgys2aQDRr.auq', 2, 1),
 (6, 'admin@gmail.com', '$2y$10$t3.cWIceqWE/cDo9lNYXAuK2fSFiRplX6QHlbuTR8TlGJU1cRtkA6', 2, 1),
-(7, 'cashier@gmail.com', '$2y$10$oxj3kjSVZEBHBEFS5EkT8OgwTkRezxKytLTgdov6Vs8qhCmOPPe9K', 3, 1),
-(8, 'cashier2@gmail.com', '$2y$10$kxW2vsZVDHzuZg.oHujg7OQUWUrr77JZ9tDMhY1GYojPNliEi3cnC', 3, 1),
+(7, 'cashier@gmail.com', '$2y$10$oxj3kjSVZEBHBEFS5EkT8OgwTkRezxKytLTgdov6Vs8qhCmOPPe9K', 2, 1),
+(8, 'cashier2@gmail.com', '$2y$10$kxW2vsZVDHzuZg.oHujg7OQUWUrr77JZ9tDMhY1GYojPNliEi3cnC', 2, 1),
 (9, 'lugs@gmail.com', '$2y$10$Sgyb8CATbHXkScwxoZmHtOMypd5SCn/fB1jgZ/elykNOe02fN/X0m', 1, 1),
 (10, 'jc.david@gmail.com', '$2y$10$nyGPsjX/.61ru7G2mZBrguQXH4/Kca7Y/T1UYioBVbxmAosIEAMHS', 1, 1),
 (12, 'miral@gmail.com', '$2y$10$qks3Gm9YKtAM1GPeXkD8POfuDjyFT8e90vxjmIxpTWeuf9qcwvMAm', 1, 1),
-(15, 'elmer@gmail.com', '$2y$10$8g.3i3JbwOKGyPRZqbAFQuec/5DT20DEOkFozaOdcJ..y6wxlQ24W', 3, 1);
+(15, 'elmer@gmail.com', '$2y$10$8g.3i3JbwOKGyPRZqbAFQuec/5DT20DEOkFozaOdcJ..y6wxlQ24W', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -123,7 +123,11 @@ CREATE TABLE `tbl_audit_log` (
 INSERT INTO `tbl_audit_log` (`log_user_id`, `log_username`, `log_user_type`, `log_date`) VALUES
 (7, 'Juan  David', '3', '2024-10-24 11:07:35'),
 (12, 'Christian  Miral', '1', '2024-10-24 11:10:20'),
-(6, 'Jc  David', '2', '2024-10-24 15:49:15');
+(6, 'Jc  David', '2', '2024-10-24 15:49:15'),
+(6, 'Jc  David', '2', '2024-11-15 02:41:56'),
+(6, 'Jc  David', '2', '2024-11-15 08:20:55'),
+(6, 'Jc  David', '2', '2024-11-15 08:21:19'),
+(6, 'Jc  David', '2', '2024-11-15 09:23:06');
 
 -- --------------------------------------------------------
 
@@ -138,32 +142,6 @@ CREATE TABLE `tbl_audit_trail` (
   `trail_user_type` varchar(50) DEFAULT NULL,
   `trail_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_audit_trail`
---
-
-INSERT INTO `tbl_audit_trail` (`trail_user_id`, `trail_username`, `trail_activity`, `trail_user_type`, `trail_date`) VALUES
-(6, 'admin', 'Updated Product', 'Admin', '2024-09-30 10:52:49'),
-(6, 'admin', 'Updated Product', 'Admin', '2024-09-30 10:53:53'),
-(6, 'admin', 'Updated Product ID: 2', 'Admin', '2024-09-30 11:04:10'),
-(6, 'admin', 'Updated Product ID: 13', 'Admin', '2024-10-11 12:16:21'),
-(6, 'admin', 'Updated Product ID: 13', 'Admin', '2024-10-11 12:16:47'),
-(6, 'admin', 'Updated Product ID: 13', 'Admin', '2024-10-11 12:16:51'),
-(6, 'admin', 'Updated Product ID: 23', 'Admin', '2024-10-23 07:32:40'),
-(6, 'Jc David', 'Updated Product ID: 4', 'Admin', '2024-10-24 09:43:01'),
-(6, 'Jc David', 'Updated Product ID: 4', 'Admin', '2024-10-24 09:43:06'),
-(6, 'Jc David', 'Deactivated Account ID: 1', 'Admin', '2024-10-24 09:45:46'),
-(6, 'Jc David', 'Reactivated Account ID: 1', 'Admin', '2024-10-24 09:45:51'),
-(6, 'Jc David', 'Deactivated Account ID: 1', 'Admin', '2024-10-24 09:46:33'),
-(6, 'Jc David', 'Reactivated Account ID: 1', 'Admin', '2024-10-24 09:46:38'),
-(6, 'Jc David', 'Deactivated Account ID: 1', 'Admin', '2024-10-24 09:46:44'),
-(6, 'Jc David', 'Reactivated Account ID: 1', 'Admin', '2024-10-24 09:46:49'),
-(6, 'Jc David', 'Deactivated Account ID: 1', 'Admin', '2024-10-24 09:47:27'),
-(6, 'Jc David', 'Reactivated Account ID: 1', 'Admin', '2024-10-24 09:47:35'),
-(6, 'Jc David', 'Create Account', 'Admin', '2024-10-24 09:57:37'),
-(6, 'Jc David', 'Updated Product ID: 4', 'Admin', '2024-10-24 15:54:29'),
-(6, 'Jc David', 'Updated Product ID: 4', 'Admin', '2024-10-24 15:55:25');
 
 -- --------------------------------------------------------
 
@@ -213,7 +191,7 @@ CREATE TABLE `tbl_cart` (
 --
 
 INSERT INTO `tbl_cart` (`item_id`, `prod_id`, `prod_qnty`, `order_date`, `status_id`, `receiver`, `sender`, `message`, `account_id`) VALUES
-(19, 20, 1, '2024-10-24', 2, 'Elmer', 'Jovs', 'I love you', 12);
+(19, 20, 1, '2024-11-15', 2, 'Elmer', 'Jovs', 'I love you', 12);
 
 -- --------------------------------------------------------
 
@@ -234,7 +212,7 @@ CREATE TABLE `tbl_item_feedback` (
 --
 
 INSERT INTO `tbl_item_feedback` (`fd_id`, `prod_id`, `fd_comment`, `fd_date`, `account_id`) VALUES
-(2, 5, 'Magandaaaa!!', '2024-10-24', 12);
+(4, 1, 'Quality', '2024-11-15', 3);
 
 -- --------------------------------------------------------
 
@@ -295,7 +273,7 @@ INSERT INTO `tbl_products` (`prod_id`, `prod_name`, `prod_price`, `prod_type`, `
 (17, 'Flourish', 900, 1, 50, '', 'Flourish.png'),
 (18, 'Harmony', 1300, 1, 50, '', 'harmony.png'),
 (19, 'Heavenly', 1200, 1, 50, '', 'heavenly.png'),
-(20, 'Honor', 900, 1, 49, '', 'honor.png'),
+(20, 'Honor', 900, 1, 48, '', 'honor.png'),
 (21, 'Rejoice', 1100, 1, 50, '', 'rejoice.png'),
 (22, 'Sincerity', 3000, 2, 50, '', 'Sincerity.png'),
 (23, 'Stunning', 2000, 1, 50, '', 'stunning.png'),
@@ -363,8 +341,7 @@ CREATE TABLE `tbl_reports` (
 --
 
 INSERT INTO `tbl_reports` (`report_id`, `rp_name`, `rp_email`, `rp_message`) VALUES
-(1, 'Jc David', 'jcdavid123c@gmail.com', 'magandaaa'),
-(2, 'Jc David', 'jcdavid123c@gmail.com', 'bulok');
+(3, 'Josh', 'jcdavid123c@gmail.com', 'asdad');
 
 -- --------------------------------------------------------
 
@@ -437,7 +414,8 @@ INSERT INTO `tbl_transactions` (`user_id`, `user_name`, `user_type`, `user_activ
 (7, 'juan', '3', 'Claimed item ', '2024-10-23', 14),
 (7, 'juan', '3', 'Claimed item ', '2024-10-23', 17),
 (7, 'juan', '3', 'Claimed item NewJeans - NJ Supernatural Photocard SET 1', '2024-10-23', 17),
-(7, 'Juan David', '3', 'Claimed item Honor', '2024-10-24', 19);
+(7, 'Juan David', '3', 'Claimed item Honor', '2024-10-24', 19),
+(6, 'Jc David', '2', 'Claimed item Honor', '2024-11-15', 19);
 
 --
 -- Indexes for dumped tables
@@ -547,7 +525,7 @@ ALTER TABLE `tbl_cart`
 -- AUTO_INCREMENT for table `tbl_item_feedback`
 --
 ALTER TABLE `tbl_item_feedback`
-  MODIFY `fd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `fd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_order_type`
@@ -577,7 +555,7 @@ ALTER TABLE `tbl_receipt`
 -- AUTO_INCREMENT for table `tbl_reports`
 --
 ALTER TABLE `tbl_reports`
-  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_role`
