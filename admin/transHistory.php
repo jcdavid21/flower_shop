@@ -60,11 +60,11 @@ require_once("../backend/config/config.php");
                       <table id="userAuditLogs" class="table table-striped nowrap" style="width:100%">
                         <thead>
                           <tr>
-                            <th>User ID</th>
+                            <th>ID</th>
                             <th>Username</th>
-                            <th>User Activty</th>
-                            <th>User Type</th>
-                            <th>Claimed Date</th>
+                            <th>Activty</th>
+                            <th>Type</th>
+                            <th>Received Date</th>
                             <th>Action</th>
                           </tr>
                         </thead>

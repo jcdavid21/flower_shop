@@ -68,18 +68,18 @@ require_once("../backend/config/config.php");
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Account Name</th>
-                                            <th>Account Contact</th>
-                                            <th>Account Address</th>
+                                            <th>Name</th>
+                                            <th>Contact</th>
+                                            <th>Address</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Account Name</th>
-                                            <th>Account Contact</th>
-                                            <th>Account Address</th>
+                                            <th>Name</th>
+                                            <th>Contact</th>
+                                            <th>Address</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
