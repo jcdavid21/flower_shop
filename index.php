@@ -48,7 +48,7 @@
                                 if(isset($_SESSION["user_id"]))
                                 {
                                     $user_id = $_SESSION["user_id"];
-                                    $query = "SELECT * FROM tbl_cart WHERE account_id = ?";
+                                    $query = "SELECT * FROM tbl_cart WHERE account_id = ? AND status_id = 1";
                                     $stmt = $conn->prepare($query);
                                     $stmt->bind_param("i", $user_id);
                                     $stmt->execute();
@@ -79,7 +79,7 @@
                         ";
                     }else{
                         echo "
-                        <a href='./login.php' class='a-js profile-logIn'>
+                        <a href='./components/login.php' class='a-js profile-logIn'>
                             <i class='fa-solid fa-user fa-xl' style='color: rgb(96, 96, 96);'></i>
                         </a>
                         ";

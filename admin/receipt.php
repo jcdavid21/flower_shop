@@ -71,6 +71,8 @@ require_once("../backend/config/config.php");
                                             <th>Order Id</th>
                                             <th>Customer Name</th>
                                             <th>Reference No.</th>
+                                            <th>Sender Address</th>
+                                            <th>Uploaded Date</th>
                                             <th>Uploaded Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -80,6 +82,8 @@ require_once("../backend/config/config.php");
                                             <th>Order Id</th>
                                             <th>Customer Name</th>
                                             <th>Reference No.</th>
+                                            <th>Sender Name</th>
+                                            <th>Sender Address</th>
                                             <th>Uploaded Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -101,6 +105,8 @@ require_once("../backend/config/config.php");
                                             <td><?php echo $data['receipt_id'];?></td>
                                             <td><?php echo $data['full_name'];?></td>
                                             <td><?php echo $data["receipt_number"]; ?></td>
+                                            <td><?php echo $data["sender_name"]; ?></td>
+                                            <td><?php echo $data["sender_address"]; ?></td>
                                             <td><?php echo $formattedDate; ?></td>
                                             <td>
                                                 <button type="button" class="btn btn-primary" id="<?php echo $data["receipt_id"] ?>"  data-bs-toggle="modal" 

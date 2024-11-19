@@ -30,8 +30,8 @@ $(document).ready(()=>{
                     }else{
                         console.log(response)
                         Swal.fire({
-                            title: "Welcome back!",
-                            text: "Successfully Log in",
+                            title: "Successfully Log in",
+                            text: "Redirecting to Menu",
                             
                             showConfirmButton: false,
                             timer: 3000,

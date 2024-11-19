@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 15, 2024 at 10:43 AM
+-- Generation Time: Nov 19, 2024 at 03:10 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -40,7 +40,7 @@ CREATE TABLE `tbl_account` (
 --
 
 INSERT INTO `tbl_account` (`account_id`, `ac_email`, `ac_password`, `role_id`, `account_status_id`) VALUES
-(1, 'jcdavid@gmail.com', '$2y$10$iAp34p.CeIZRqYDlgM.AOuFM7Q2d2uifCpbl14xbsnptXoiRozEqy', 1, 1),
+(1, 'jcdavid@gmail.com', '$2y$10$Nf6TJqPlMAIFlBEEoJ2n4OG.42jdz6zbEtbUfO.6a20CETTMoQLAi', 1, 1),
 (2, 'golden@gmail.com', '$2y$10$92lKJT/9e9JSzuGmEZ1N8.cPldvOQexUuU2k97F5GykS0rP4l5tqq', 1, 1),
 (3, 'johnerick@gmail.com', '$2y$10$OZIIZnjXfRrVNX5G389R3.emX0dGaTb35PIQAbOqKhEB6qYWnoAuC', 2, 1),
 (4, 'lugo@gmail.com', '$2y$10$m5gg4RhBizZnqOJXR6IFIemRMw/0bex4eY4mxCNpgys2aQDRr.auq', 2, 1),
@@ -127,7 +127,13 @@ INSERT INTO `tbl_audit_log` (`log_user_id`, `log_username`, `log_user_type`, `lo
 (6, 'Jc  David', '2', '2024-11-15 02:41:56'),
 (6, 'Jc  David', '2', '2024-11-15 08:20:55'),
 (6, 'Jc  David', '2', '2024-11-15 08:21:19'),
-(6, 'Jc  David', '2', '2024-11-15 09:23:06');
+(6, 'Jc  David', '2', '2024-11-15 09:23:06'),
+(1, 'Jc Domingo David', '1', '2024-11-18 11:37:34'),
+(1, 'Jc Domingo David', '1', '2024-11-18 11:42:06'),
+(6, 'Jc  David', '2', '2024-11-18 12:52:17'),
+(1, 'Jc Domingo David', '1', '2024-11-18 12:54:03'),
+(6, 'Jc  David', '2', '2024-11-18 13:01:35'),
+(6, 'Jc  David', '2', '2024-11-18 13:06:00');
 
 -- --------------------------------------------------------
 
@@ -142,6 +148,14 @@ CREATE TABLE `tbl_audit_trail` (
   `trail_user_type` varchar(50) DEFAULT NULL,
   `trail_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_audit_trail`
+--
+
+INSERT INTO `tbl_audit_trail` (`trail_user_id`, `trail_username`, `trail_activity`, `trail_user_type`, `trail_date`) VALUES
+(6, 'Jc David', 'Updated Product ID: 4', 'Admin', '2024-11-18 12:52:36'),
+(6, 'Jc David', 'Updated Product ID: 4', 'Admin', '2024-11-18 12:52:45');
 
 -- --------------------------------------------------------
 
@@ -191,7 +205,8 @@ CREATE TABLE `tbl_cart` (
 --
 
 INSERT INTO `tbl_cart` (`item_id`, `prod_id`, `prod_qnty`, `order_date`, `status_id`, `receiver`, `sender`, `message`, `account_id`) VALUES
-(19, 20, 1, '2024-11-15', 2, 'Elmer', 'Jovs', 'I love you', 12);
+(19, 20, 1, '2024-11-15', 2, 'Elmer', 'Jovs', 'I love you', 12),
+(20, 4, 1, NULL, 2, 'Elmer', 'Jovs', 'asDAD', 1);
 
 -- --------------------------------------------------------
 
@@ -257,7 +272,7 @@ INSERT INTO `tbl_products` (`prod_id`, `prod_name`, `prod_price`, `prod_type`, `
 (1, 'A life remembered', 2000, 2, 50, 'None', 'A life remembered.png'),
 (2, 'Beaming', 1400, 2, 50, '', 'beaming.png'),
 (3, 'Beautiful Farewell', 2500, 2, 50, '', 'Beautiful Farewell.png'),
-(4, 'Bliss', 1500, 1, 50, 'edit this description', 'bliss.png'),
+(4, 'Bliss', 1500, 1, 50, 'edit the product description', 'bliss.png'),
 (5, 'Charm', 500, 1, 50, '', 'charm.png'),
 (6, 'Clarity', 900, 1, 50, '', 'clarity.png'),
 (7, 'Comfort of Bereaved', 5000, 2, 50, '', 'Comfort of Bereaved.png'),
@@ -311,17 +326,19 @@ CREATE TABLE `tbl_receipt` (
   `receipt_img` varchar(255) NOT NULL,
   `receipt_number` varchar(50) NOT NULL,
   `deposit_amount` int(11) NOT NULL,
-  `uploaded_date` date NOT NULL
+  `uploaded_date` date NOT NULL,
+  `sender_name` varchar(255) NOT NULL,
+  `sender_address` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_receipt`
 --
 
-INSERT INTO `tbl_receipt` (`receipt_id`, `account_id`, `receipt_img`, `receipt_number`, `deposit_amount`, `uploaded_date`) VALUES
-(28, 1, '670e543aac139.jpeg', '3212313131313', 120, '2024-10-15'),
-(29, 2, '6718a6c996ddf.jpeg', '2134214213111', 4400, '2024-10-23'),
-(30, 12, '671a0b9121f2b.jpeg', '2134214213111', 900, '2024-10-24');
+INSERT INTO `tbl_receipt` (`receipt_id`, `account_id`, `receipt_img`, `receipt_number`, `deposit_amount`, `uploaded_date`, `sender_name`, `sender_address`) VALUES
+(28, 1, '670e543aac139.jpeg', '3212313131313', 120, '2024-10-15', 'Josh', 'Bayan'),
+(29, 2, '6718a6c996ddf.jpeg', '2134214213111', 4400, '2024-10-23', 'Ivan', 'Cubao'),
+(30, 12, '671a0b9121f2b.jpeg', '2134214213111', 900, '2024-10-24', 'Jopert', 'Bayan');
 
 -- --------------------------------------------------------
 
@@ -519,13 +536,13 @@ ALTER TABLE `tbl_best_seller`
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_item_feedback`
 --
 ALTER TABLE `tbl_item_feedback`
-  MODIFY `fd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `fd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_order_type`

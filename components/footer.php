@@ -20,7 +20,7 @@
                     <div class="footer-col">
                         <h4>Get Help</h4>
                         <ul>
-                            <li><a href="components/about.php">About Us</a></li>
+                            <li><a href="">About Us</a></li>
                             <li><a href="">Privacy Policy</a></li>
                             <li><a href="">Terms & Conditions</a></li>
                             <li><a href="">Payment Terms / Payment Instructions</a></li>

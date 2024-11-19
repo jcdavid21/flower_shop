@@ -9,7 +9,6 @@ $(document).ready(() => {
             Swal.fire({
                 title: "Log in first!",
                 text: "You need to log in first before you can submit feedback!",
-                icon: "warning"
             });
             return
         }
@@ -24,9 +23,8 @@ $(document).ready(() => {
                 },
                 success: function(response) {
                     Swal.fire({
-                        title: "Feedback Submitted!",
-                        text: "Thank you for your feedback!",
-                        icon: "success",
+                        title: "Submitted!",
+                        text: "Your feedback has been submitted.",
                         showConfirmButton: false,
                         timer: 1500
                     });

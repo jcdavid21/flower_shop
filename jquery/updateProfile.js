@@ -26,7 +26,7 @@ $(document).ready(function(){
         const lName = document.getElementById("lname").value;      
         const address = document.getElementById("address").value;    
         const contact = document.getElementById("contact").value;    
-        const password = document.getElementById("password").value;    
+        // const password = document.getElementById("password").value;    
         const confirmPass = document.getElementById("confirmPass").value;    
 
         if(fName && lName && address && contact) {
@@ -35,13 +35,18 @@ $(document).ready(function(){
                 return;
             }
 
-            if (password && !validatePassword(password)) {
-                swal("Weak Password!", "Password must be at least 8 characters long and include at least one uppercase letter and one lowercase letter.", "warning");
-                return;
-            }
+            // if (password && !validatePassword(password)) {
+            //     swal("Weak Password!", "Password must be at least 8 characters long and include at least one uppercase letter and one lowercase letter.", "warning");
+            //     return;
+            // }
 
-            if (password && password !== confirmPass) {
-                swal("Password doesn't match!", "Make sure that your passwords are the same.", "warning");
+            // if (password && password !== confirmPass) {
+            //     swal("Password doesn't match!", "Make sure that your passwords are the same.", "warning");
+            //     return;
+            // }
+
+            if(confirmPass && !validatePassword(confirmPass)) {
+                swal("Weak Password!", "Password must be at least 8 characters long and include at least one uppercase letter and one lowercase letter.", "warning");
                 return;
             }
 
@@ -54,7 +59,7 @@ $(document).ready(function(){
                     lName,
                     address,
                     contact,
-                    password,
+                    // password,
                     confirmPass
                 },
                 success: function(response) {

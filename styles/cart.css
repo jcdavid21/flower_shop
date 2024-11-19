@@ -22,7 +22,7 @@ main .center, .center {
     padding: 0 30px;
 }
 
-main .center .div, .center .h1-div {
+.center .h1-div {
     max-width: 1200px;
     width: 100%;
 }
@@ -72,13 +72,6 @@ body .center .h1-div div{
     text-decoration: none;
 }
 
-
-
-.center .div {
-    display: grid;
-    grid-template-columns: 1fr 350px;
-    gap: 30px;
-}
 
 .left-con h1 {
     font-weight: 600;
@@ -143,7 +136,14 @@ body .center .h1-div div{
     color: white;
 }
 
+.right-con{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
 .right-con .total-con {
+    width: 400px;
     border: 1px solid #e2e8f0;
     background: #ffffff;
     border-radius: 8px;
@@ -337,6 +337,18 @@ body .center .h1-div div{
     background-color: #dfdfdf;
 }
 
+.center .div{
+    display: grid;
+    grid-template-columns: 850px 1fr;
+    align-items: start;
+    gap: 20px;
+}
+
+.modal-dialog{
+    height: 300px;
+    overflow: auto;
+}
+
 @media (max-width: 990px) {
     .center .div {
         grid-template-columns: 1fr;
@@ -345,4 +357,9 @@ body .center .h1-div div{
     .img-con, .th-1 {
         display: none;
     }
+}
+
+
+main .center #column{
+    width: 100%;
 }

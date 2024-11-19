@@ -17,7 +17,7 @@
     <?php include "./navbar.php" ?>
     <main>
         <div class="center">
-            <div class="con">
+            <div class="con flex">
                 <div class="con-header">
                     <div class="header-con">
                         <h1>Menus</h1>

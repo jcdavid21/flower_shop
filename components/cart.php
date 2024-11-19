@@ -68,8 +68,8 @@ require_once("../backend/config/config.php");
                                     <th>Product</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
-                                    <th>From</th>
-                                    <th>To</th>
+                                    <th>Sender</th>
+                                    <th>Receiver</th>
                                     <th>Total</th>
                                     <th></th>
                                 </tr>
@@ -107,22 +107,63 @@ require_once("../backend/config/config.php");
                         </table>
                     </div>
                 </div>
-                <div class="right-con">
-                    <div class="total-con">
-                        <h1>Order Summary</h1>
-                        <div class="price-div">
-                            <div class="text">
-                                <div>Subtotal/Item:</div>
-                                <span class="text-price">₱<?php echo number_format($subtotalOnly, 2); ?></span>
-                            </div>
-                            <div class="text">
-                                <div>Total:</div>
-                                <div class="text-total">₱<?php echo number_format($total, 2); ?></div>
-                            </div>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Order now</button>
+
+                <div class="modal-dialog modal-lg mt-0 visible-modal" style="position: relative; right: 0; top: 0; width: 100%;">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Payment Details</h5>
+                <button type="button" class="close text-white" onclick="document.querySelector('.visible-modal').style.display='none'">
+                    <!-- <span aria-hidden="true">&times;</span> -->
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form>
+                    <!-- Amount -->
+                    <div class="form-group">
+                        <label class="font-weight-bold text-dark">Total Amount:</label>
+                        <input type="text" disabled id="overAllTotal" class="form-control text-danger font-weight-bold" value="₱<?php echo number_format($total, 2); ?>">
+                    </div>
+                    <!-- Receipt Upload -->
+                    <div class="form-group">
+                        <label for="receiptFile" class="font-weight-bold text-dark">Upload Receipt:</label>
+                        <input type="file" class="form-control" id="receiptFile">
+                    </div>
+                    <!-- Reference Number -->
+                    <div class="form-group">
+                        <label for="refNumber" class="font-weight-bold text-dark">Gcash Reference Number:</label>
+                        <input type="text" class="form-control" id="refNumber" maxlength="13" placeholder="Enter your reference number">
+                    </div>
+                    <div class="form-group">
+                        <label for="gcashName" class="font-weight-bold text-dark">Gcash Name:</label>
+                        <input type="text" class="form-control" id="gcashName" placeholder="Enter Gcash Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="senderAddress" class="font-weight-bold text-dark">Sender Address:</label>
+                        <input type="text" class="form-control" id="senderAddress" placeholder="Enter Sender Address">
+                    </div>
+                    <!-- Deposit Amount -->
+                    <div class="form-group">
+                        <label for="depAmount" class="font-weight-bold text-dark">Deposit Amount:</label>
+                        <input type="text" class="form-control" id="depAmount" oninput="this.value = this.value.replace(/[^0-9]/g, '');" placeholder="Enter deposit amount">
+                    </div>
+                    <!-- QR Code -->
+                    <div class="form-group text-center">
+                        <label class="font-weight-bold text-dark">Pay via Gcash QR Code:</label>
+                        <div class="bg-light p-3 rounded">
+                            <img src="../assets/imgs/qr.jpeg" alt="QR Code" class="img-fluid" style="max-height: 300px; object-fit: contain;">
                         </div>
                     </div>
-                </div>
+                </form>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="document.querySelector('.visible-modal').style.display='none'">Cancel</button>
+                <button type="button" class="btn btn-primary proceed-btn">Submit Payment</button>
+            </div>
+        </div>
+    </div>
             </div>
         </div>
     </main>
@@ -133,51 +174,9 @@ require_once("../backend/config/config.php");
             <p>No products available at the moment.</p>
         </div>
     <?php } ?>
+<!-- Visible Modal -->
 
-    <!--MODAL-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Receipt Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                    <div class="mb-3">
-                        <label class="col-form-label">Amount to be pay:</label>
-                        <input type="text" disabled id="overAllTotal" class="font-weight-bold w-100 text-danger" value="₱<?php echo number_format($total, 2); ?>">
-                    </div>
 
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1">Upload Your Receipt:</label>
-                            <input type="file" class="form-control-file" id="receiptFile">
-                        </div>
-                        <div class="mb-3">
-                            <label class="col-form-label">Reference Number</label>
-                            <input type="text" class="form-control" id="refNumber" maxlength="13"
-                            placeholder="Gcash Reference Number">
-                        </div>
-                        <div class="mb-3">
-                            <label class="col-form-label">Deposit Amount:</label>
-                            <input type="text" class="form-control" id="depAmount" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-                        </div>
-                        <div class="img-con" style="height: 350px; padding-bottom: 20px;">
-                            <label class="col-form-label">Send Your Payment Here:</label>
-                            <img src="../assets/imgs/qr.jpeg" alt="" style="object-fit: contain;">
-                        </div>
-                    </form>
-                </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary proceed-btn">Proceed</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 

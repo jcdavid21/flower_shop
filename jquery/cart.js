@@ -72,6 +72,8 @@ $('.add-btn').on('click', function() {
     $('.proceed-btn').on('click', function() {
     
         const receiptFile = $('#receiptFile')[0].files[0];
+        const gcashName = $("#gcashName").val().trim();
+        const senderAddress = $("#senderAddress").val().trim();
         const refNumber = $("#refNumber").val().trim();
         const depositAmnt = $("#depAmount").val().trim();
         const totalAmnt = $("#overAllTotal").val().trim().replace("₱", "").replace(",", "");
@@ -80,6 +82,24 @@ $('.add-btn').on('click', function() {
         if (!receiptFile) {
             Swal.fire({
                 title: "Please upload your receipt",
+                
+                showConfirmButton: true,
+            });
+            return;
+        }
+
+        if (!gcashName) {
+            Swal.fire({
+                title: "Please enter your Gcash Name.",
+                
+                showConfirmButton: true,
+            });
+            return;
+        }
+
+        if (!senderAddress) {
+            Swal.fire({
+                title: "Please enter your Address.",
                 
                 showConfirmButton: true,
             });

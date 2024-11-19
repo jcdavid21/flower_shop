@@ -8,7 +8,7 @@
      <link rel="stylesheet" href="../styles/general.css">
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/navbar.css">
-    <link rel="stylesheet" href="../styles/profile.css">
+    <link rel="stylesheet" href="../styles/signup.css">
     <script src="../jquery/jquery.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -62,10 +62,10 @@
             <span class="details">Phone Number</span>
             <input type="text" name="contact" id="contact" placeholder="Enter your number" value="<?php echo $data["contact"]; ?>" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 11)" required>
           </div>
-          <div class="input-box">
+          <!-- <div class="input-box">
             <span class="details">Current Password</span>
             <input type="password" name="password" id="password" placeholder="Enter your current password" required>
-          </div>
+          </div> -->
           <div class="input-box">
             <span class="details">New Password</span>
             <input type="password" name="confirmPass" id="confirmPass" placeholder="Confirm your new password" required>

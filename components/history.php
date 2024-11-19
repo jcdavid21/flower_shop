@@ -58,7 +58,7 @@ require_once("../backend/config/config.php");
     ?>
     <main>
         <div class="center">
-            <div class="div">
+            <div id="column">
                 <div class="left-con">
                     <div class="cart-con">
                         <table class="styled-table">
@@ -69,6 +69,8 @@ require_once("../backend/config/config.php");
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Subtotal</th>
+                                    <th>Sender</th>
+                                    <th>Receiver</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -96,6 +98,8 @@ require_once("../backend/config/config.php");
                                         </div>
                                     </td>
                                     <td class="total-price-js">₱<span class="subtotal-js"><?php echo number_format($subtotal, 2); ?></span></td>
+                                    <td><?php echo $data["sender"]; ?></td>
+                                    <td><?php echo $data["receiver"]; ?></td>
                                     <td><?php echo $data["status_name"]; ?></td>
                                   
                                 </tr>
@@ -106,17 +110,7 @@ require_once("../backend/config/config.php");
                 </div>
                 <div class="right-con">
                     <div class="total-con">
-                        <h1>Cart totals</h1>
-                        <div class="price-div">
-                            <div class="text">
-                                <div>Subtotal/Item:</div>
-                                <span class="text-price">₱<?php echo number_format($subtotalOnly, 2); ?></span>
-                            </div>
-                            <div class="text">
-                                <div>Total:</div>
-                                <div class="text-total">₱<?php echo number_format($total, 2); ?></div>
-                            </div>
-                        </div>
+                        <h1>Total:  <span class="text-total">₱<?php echo number_format($total, 2); ?></span></h1>
                     </div>
                 </div>
             </div>
