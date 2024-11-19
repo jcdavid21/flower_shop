@@ -34,7 +34,7 @@
                                 if(isset($_SESSION["user_id"]))
                                 {
                                     $user_id = $_SESSION["user_id"];
-                                    $query = "SELECT * FROM tbl_cart WHERE account_id = ? AND status_id = 4";
+                                    $query = "SELECT * FROM tbl_cart WHERE account_id = ? AND status_id = 1";
                                     $stmt = $conn->prepare($query);
                                     $stmt->bind_param("i", $user_id);
                                     $stmt->execute();

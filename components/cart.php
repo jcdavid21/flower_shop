@@ -30,7 +30,7 @@ require_once("../backend/config/config.php");
 
     <div class="center">
         <div class="h1-div">
-            <h1>Your Cart</h1>
+            <h1>Cart</h1>
             <a href="./ProcessOrders.php">
             <div class="inner">
                 <i class="fa-solid fa-arrow-right"></i>
