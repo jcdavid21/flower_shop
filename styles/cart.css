@@ -360,3 +360,20 @@ body .center .h1-div .inner{
 main .center #column{
     width: 100%;
 }
+
+main table tbody .orderReceived{
+    color: white !important;
+    background-color: #dd7089;
+    padding: 6px 12px;
+    font-weight: 500;
+    border: none;
+    border-radius: 50px;
+}
+
+main table tbody .orderReceived:hover{
+    background-color: #f56565;
+}
+
+main table tbody .bg-color:hover{
+    background-color: transparent !important;
+}

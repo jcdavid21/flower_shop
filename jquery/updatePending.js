@@ -1,5 +1,5 @@
 $(document).ready(()=>{
-    $('.updateBtn').on('click', function(){
+    $('.updateBtn, .orderReceived').on('click', function(){
         const item_id = $(this).attr('id');
         const current_status = $(this).data('status-id');
         let status_id = 0;

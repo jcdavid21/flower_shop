@@ -124,14 +124,18 @@ require_once("../backend/config/config.php");
                             data-bs-whatever="@getbootstrap">
                                 <i class="fa-solid fa-eye" style="color: #fcfcfc;"></i>
                             </button>
+                            <?php 
+                              if($status_id == 3) {
+                            ?>
+                            <button type="button" class="btn btn-success updateBtn" id="<?php echo htmlspecialchars($data['item_id']); ?>" data-status-id="<?php echo $data["status_id"] ?>">
+                            <i class="fa-solid fa-check" style="color: #fcfcfc;"></i>
+                          </button>
+                          <?php 
+                            }?>
                         <?php 
                             if($status_id == 3 || $status_id == 4) {
                         ?>
         
-                          <button type="button" class="btn btn-success updateBtn" id="<?php echo htmlspecialchars($data['item_id']); ?>" data-status-id="<?php echo $data["status_id"] ?>">
-                            <i class="fa-solid fa-check" style="color: #fcfcfc;"></i>
-                          </button>
-
                           <button type="button" class="btn btn-danger delete-js" id="<?php echo htmlspecialchars($data['item_id']); ?>">
                             <i class="fa-solid fa-ban" style="color: #fcfcfc;"></i>
                           </button>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 19, 2024 at 03:10 AM
+-- Generation Time: Nov 19, 2024 at 04:43 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -133,7 +133,12 @@ INSERT INTO `tbl_audit_log` (`log_user_id`, `log_username`, `log_user_type`, `lo
 (6, 'Jc  David', '2', '2024-11-18 12:52:17'),
 (1, 'Jc Domingo David', '1', '2024-11-18 12:54:03'),
 (6, 'Jc  David', '2', '2024-11-18 13:01:35'),
-(6, 'Jc  David', '2', '2024-11-18 13:06:00');
+(6, 'Jc  David', '2', '2024-11-18 13:06:00'),
+(1, 'Jc Domingo David', '1', '2024-11-19 02:10:47'),
+(6, 'Jc  David', '2', '2024-11-19 02:39:26'),
+(6, 'Jc  David', '2', '2024-11-19 14:55:59'),
+(1, 'Jc Domingo David', '1', '2024-11-19 15:21:20'),
+(12, 'Christian  Miral', '1', '2024-11-19 15:23:18');
 
 -- --------------------------------------------------------
 
@@ -205,8 +210,8 @@ CREATE TABLE `tbl_cart` (
 --
 
 INSERT INTO `tbl_cart` (`item_id`, `prod_id`, `prod_qnty`, `order_date`, `status_id`, `receiver`, `sender`, `message`, `account_id`) VALUES
-(19, 20, 1, '2024-11-15', 2, 'Elmer', 'Jovs', 'I love you', 12),
-(20, 4, 1, NULL, 2, 'Elmer', 'Jovs', 'asDAD', 1);
+(19, 20, 1, '2024-11-19', 5, 'Elmer', 'Jovs', 'I love you', 12),
+(20, 4, 1, NULL, 1, 'Elmer', 'Jovs', 'asDAD', 1);
 
 -- --------------------------------------------------------
 
@@ -288,7 +293,7 @@ INSERT INTO `tbl_products` (`prod_id`, `prod_name`, `prod_price`, `prod_type`, `
 (17, 'Flourish', 900, 1, 50, '', 'Flourish.png'),
 (18, 'Harmony', 1300, 1, 50, '', 'harmony.png'),
 (19, 'Heavenly', 1200, 1, 50, '', 'heavenly.png'),
-(20, 'Honor', 900, 1, 48, '', 'honor.png'),
+(20, 'Honor', 900, 1, 47, '', 'honor.png'),
 (21, 'Rejoice', 1100, 1, 50, '', 'rejoice.png'),
 (22, 'Sincerity', 3000, 2, 50, '', 'Sincerity.png'),
 (23, 'Stunning', 2000, 1, 50, '', 'stunning.png'),
@@ -400,7 +405,7 @@ INSERT INTO `tbl_status` (`status_id`, `status_name`) VALUES
 (2, 'DELIVERED'),
 (3, 'PROCESS'),
 (4, 'OUT FOR DELIVERY'),
-(5, 'CANCELED'),
+(5, 'CANCELLED'),
 (6, 'RESERVE');
 
 -- --------------------------------------------------------

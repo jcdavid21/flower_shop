@@ -58,7 +58,7 @@ require_once("../backend/config/config.php");
                     <!-- Content Row -->
                     <div class="row">
 
-                        <div class="col-xl-10 col-lg-7">
+                        <div class="col-xl-11 col-lg-7">
                             <!-- Area Chart -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
@@ -94,8 +94,7 @@ require_once("../backend/config/config.php");
                                           AND tc.status_id = 2
                                       LEFT JOIN tbl_products tp ON tp.prod_id = tc.prod_id
                                       GROUP BY m.MonthNumber
-                                      ORDER BY m.MonthNumber;
-");
+                                      ORDER BY m.MonthNumber;");
                       
                                     foreach ($monthlyBcRequest as $data) {
                                     $monthlyBc[] = $data['Dates'];
@@ -110,6 +109,49 @@ require_once("../backend/config/config.php");
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div>
+                        <div>Top 5 Products with high sales for this <?php echo date('F') ?></div>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Quantity Sold</th>
+                                    <th>Price</th>
+                                    <th>Total Sales</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $currentMonth = date('m');
+                                    $currentYear = date('Y');
+                                    $topProducts = mysqli_query($conn, "SELECT 
+                                        tp.prod_name AS ProductName,
+                                        SUM(tc.prod_qnty) AS QuantitySold,
+                                        tp.prod_price AS Price,
+                                        SUM(tc.prod_qnty * tp.prod_price) AS TotalSales
+                                    FROM
+                                        tbl_cart tc
+                                    LEFT JOIN tbl_products tp ON tp.prod_id = tc.prod_id
+                                    WHERE
+                                        MONTH(tc.order_date) = $currentMonth
+                                        AND YEAR(tc.order_date) = $currentYear
+                                        AND tc.status_id = 2
+                                    GROUP BY tc.prod_id
+                                    ORDER BY QuantitySold DESC
+                                    LIMIT 5;");
+                                    foreach ($topProducts as $data) {
+                                ?>
+                                <tr>
+                                    <td><?php echo $data['ProductName']; ?></td>
+                                    <td><?php echo $data['QuantitySold']; ?></td>
+                                    <td><?php echo $data['Price']; ?></td>
+                                    <td><?php echo $data['TotalSales']; ?></td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
 
                 </div>

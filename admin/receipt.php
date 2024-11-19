@@ -71,8 +71,8 @@ require_once("../backend/config/config.php");
                                             <th>Order Id</th>
                                             <th>Customer Name</th>
                                             <th>Reference No.</th>
+                                            <th>Sender Name</th>
                                             <th>Sender Address</th>
-                                            <th>Uploaded Date</th>
                                             <th>Uploaded Date</th>
                                             <th>Action</th>
                                         </tr>

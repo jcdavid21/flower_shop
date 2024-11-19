@@ -69,7 +69,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Manage Orders:</h6>
                 <a class="collapse-item status-order" data-status-id="3" href="#">Pending Orders</a>
-                <a class="collapse-item status-order" data-status-id="4" href="#">Accept Orders</a>
+                <a class="collapse-item status-order" data-status-id="4" href="#">Out For Delivery Orders</a>
                 <a class="collapse-item status-order" data-status-id="2" href="#">Delivered</a>
                 <a class="collapse-item status-order" data-status-id="5" href="#">Cancelled</a>
             </div>

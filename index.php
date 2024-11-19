@@ -96,7 +96,7 @@
                     <img src="./assets/imgs/home-bg.avif" alt="">
                     <div class="context">
                         <div>We Arrange Flowers For All Ocasions</div>
-                        <button>Shop Now</button>
+                        <a href="./components/Menus.php"><button>Shop Now</button></a>
                     </div>
                 </div>
                 <div class="center">

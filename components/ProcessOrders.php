@@ -110,8 +110,11 @@ require_once("../backend/config/config.php");
                                     if ($data["status_id"] == 3) {
                                     ?>
                                     <td class="delete-js" id="<?php echo $data["item_id"]; ?>"><i class="fa-solid fa-x"></i></td>
-                                    <?php }else{ ?>
-                                        <td></td>
+                                    <?php }else if($data["status_id"] == 4){ ?>
+                                        <td class="bg-color"><button class="orderReceived"
+                                        id="<?php echo htmlspecialchars($data['item_id']); ?>" data-status-id="<?php echo $data["status_id"] ?>">
+                                            RECEIVED ITEM
+                                        </button></td>
                                     <?php } ?>
                                 </tr>
                                 <?php } ?>
@@ -141,7 +144,8 @@ require_once("../backend/config/config.php");
 
     <?php include "./footer.php"; ?>
     <script src="../scripts/navbar.js"></script>
-    <script src="../jquery/cart.js"></script>
+    <script src="../jquery/cancelOrder.js"></script>
+    <script src="../jquery/updatePending.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
