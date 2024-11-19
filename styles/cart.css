@@ -344,10 +344,7 @@ body .center .h1-div div{
     gap: 20px;
 }
 
-.modal-dialog{
-    height: 300px;
-    overflow: auto;
-}
+
 
 @media (max-width: 990px) {
     .center .div {

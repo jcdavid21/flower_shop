@@ -111,12 +111,7 @@ require_once("../backend/config/config.php");
                 <div class="modal-dialog modal-lg mt-0 visible-modal" style="position: relative; right: 0; top: 0; width: 100%;">
         <div class="modal-content">
             <!-- Modal Header -->
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Payment Details</h5>
-                <button type="button" class="close text-white" onclick="document.querySelector('.visible-modal').style.display='none'">
-                    <!-- <span aria-hidden="true">&times;</span> -->
-                </button>
-            </div>
+           
             <!-- Modal Body -->
             <div class="modal-body">
                 <form>
