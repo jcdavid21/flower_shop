@@ -55,7 +55,7 @@ main .center, .center {
     font-style: italic;
 }
 
-body .center .h1-div div{
+body .center .h1-div .inner{
     border: #FC819E 2px solid;
     border-radius: 50px;
     border-top: none;
@@ -290,7 +290,7 @@ body .center .h1-div div{
     color: red;
 }
 
-.center .h1-div div, .center .vouchers-text {
+.center .h1-div .inner, .center .vouchers-text {
     font-weight: 300;
     font-size: 14px;
     padding: 12px;

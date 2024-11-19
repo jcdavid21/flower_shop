@@ -30,12 +30,18 @@ require_once("../backend/config/config.php");
 
     <div class="center">
         <div class="h1-div">
-            <h1>On Process</h1>
-            <div>
-                <a href="./ProcessOrders.php">On Process Orders</a>
-            </div>
-            <div>
-                <a href="./history.php">Claimed Orders</a>
+            <h1>Delivered Orders</h1>
+            <div class="d-flex">
+                <a href="./ProcessOrders.php">
+                <div class="mr-5 inner">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </div>
+                </a>
+                <a href="./history.php">
+                <div class="inner">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+                </a>
             </div>
         </div>
     </div>

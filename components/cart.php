@@ -31,12 +31,11 @@ require_once("../backend/config/config.php");
     <div class="center">
         <div class="h1-div">
             <h1>Your Cart</h1>
-            <div>
-                <a href="./ProcessOrders.php">On Process Orders</a>
+            <a href="./ProcessOrders.php">
+            <div class="inner">
+                <i class="fa-solid fa-arrow-right"></i>
             </div>
-            <div>
-                <a href="./history.php">Claimed Orders</a>
-            </div>
+            </a>
         </div>
     </div>
 
