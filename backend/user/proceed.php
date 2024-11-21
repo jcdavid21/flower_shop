@@ -70,13 +70,15 @@ if (isset($_SESSION["user_id"])) {
         if (move_uploaded_file($_FILES['receipt']['tmp_name'], $uploadFile)) {
             $ref_number = $_POST["refNumber"];
             $depositAmount = $_POST["depositAmount"];
+            $sender_name = $_POST["gcashName"];
+            $sender_address = $_POST["senderAddress"];
             $status_id = 3;
             
 
             // Insert receipt for each branch
-            $receiptQuery = "INSERT INTO tbl_receipt (account_id, receipt_img, receipt_number, deposit_amount, uploaded_date) VALUES (?, ?, ?, ?, ?)";
+            $receiptQuery = "INSERT INTO tbl_receipt (account_id, receipt_img, receipt_number, deposit_amount, uploaded_date, sender_name, sender_address) VALUES (?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($receiptQuery);
-            $stmt->bind_param("issis", $user_id, $uniqueFileName, $ref_number, $depositAmount, $date);
+            $stmt->bind_param("ississs", $user_id, $uniqueFileName, $ref_number, $depositAmount, $date, $sender_name, $sender_address);
 
             if ($stmt->execute()) {
                 // Update the cart status to 'claimed' (status_id = 3)

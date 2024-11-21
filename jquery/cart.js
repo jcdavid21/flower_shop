@@ -174,6 +174,8 @@ $('.add-btn').on('click', function() {
                 formData.append('receipt', receiptFile);
                 formData.append('refNumber', refNumber);
                 formData.append('depositAmount', depositAmnt);
+                formData.append('gcashName', gcashName);
+                formData.append('senderAddress', senderAddress);
     
                 $.ajax({ 
                     url: "../backend/user/proceed.php",

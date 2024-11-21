@@ -10,7 +10,7 @@
 
         $query = "DELETE FROM tbl_cart WHERE item_id = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("ii", $item_id, $user_id);
+        $stmt->bind_param("i", $item_id);
         $stmt->execute();
         echo "deleted";
     }
