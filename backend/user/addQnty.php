@@ -15,6 +15,11 @@
             $data = $result->fetch_assoc();
             $currentQnty = intval($data["prod_qnty"]);
 
+            if($currentQnty > 9){
+                echo $currentQnty;
+                exit();
+            }
+
             if($currentQnty >= 1){
                 $updatedQnty = $currentQnty + 1;
                 $query2 = "UPDATE tbl_cart SET prod_qnty = ? WHERE item_id = ? AND account_id = ? AND status_id = 1";

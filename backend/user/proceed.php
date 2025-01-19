@@ -7,7 +7,7 @@ if (isset($_SESSION["user_id"])) {
     $date = date('Y-m-d');
     $check = false;
 
-    $selectQuery = "SELECT * FROM tbl_cart WHERE account_id = ? AND status_id = 1";
+    $selectQuery = "SELECT * FROM tbl_cart WHERE account_id = ? AND status_id = 1 AND item_check = 1";
     $stmt = $conn->prepare($selectQuery);
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
@@ -82,7 +82,7 @@ if (isset($_SESSION["user_id"])) {
 
             if ($stmt->execute()) {
                 // Update the cart status to 'claimed' (status_id = 3)
-                $cartQuery = "UPDATE tbl_cart SET status_id = ?, order_date = ? WHERE account_id = ? AND status_id = 1";
+                $cartQuery = "UPDATE tbl_cart SET status_id = ?, order_date = ? WHERE account_id = ? AND status_id = 1 AND item_check = 1";
                 $stmt = $conn->prepare($cartQuery);
                 $stmt->bind_param("isi", $status_id, $date, $user_id);
 

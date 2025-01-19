@@ -64,6 +64,7 @@ require_once("../backend/config/config.php");
                             <thead>
                                 <tr>
                                     <th></th>
+                                    <th></th>
                                     <th>Product</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
@@ -77,11 +78,20 @@ require_once("../backend/config/config.php");
                                 <?php
                                 while ($data = $result->fetch_assoc()) {
                                     $subtotal = round($data["prod_qnty"] * $data["prod_price"], 2);
-                                    $total += $subtotal;
+
+                                    if($data["item_check"] == 1){
+                                        $total += $subtotal;
+                                    }
+                                    
                                     $formattedTypeName = strtolower(str_replace(' ', '_', $data["prod_type_name"]));
                                     $subtotalOnly += round($data["prod_price"], 2);
                                 ?>
                                 <tr>
+                                    <td>
+                                        <input type="checkbox" class="checkbox"
+                                        <?php echo $data["item_check"] == 1 ? "checked" : ""; ?>
+                                        data-item-id="<?php echo $data["item_id"]; ?>">
+                                    </td>
                                     <td>
                                         <div class="img-con">
                                         <img src="../assets/<?php echo $formattedTypeName; ?>/<?php echo $data["prod_img"]; ?>" alt="">

@@ -67,6 +67,25 @@ $('.add-btn').on('click', function() {
     }
 });
 
+    $('.checkbox').on('click', function() {
+        const item_id = $(this).data('item-id');
+        const status = $(this).is(':checked') ? 1 : 0;
+
+        if (item_id) {
+            $.ajax({
+                url: "../backend/user/updateStatus.php",
+                method: "post",
+                data: { item_id, status },
+                success: function(response) {
+                    window.location.reload();
+                },
+                error: function() {
+                    alert("Connection Error!");
+                }
+            });
+        }
+    });
+
 
 
     $('.proceed-btn').on('click', function() {

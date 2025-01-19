@@ -65,7 +65,8 @@ if(isset($_GET["type"])){
                                 <div class="title">Message on the card</div>
                                 <textarea name="message" id="message" placeholder="Message on the card" rows="5" cols="10"></textarea>
                                 <div class="center">
-                                    <input type="number" min="1" value="1" id="quantity">
+                                    <input type="number" min="1" value="1" id="quantity"
+                                    oninput="maxQuantity(this)" placeholder="Quantity">
                                     <button id="submit"
                                     data-prod-id="<?php echo $products[0]["prod_id"]; ?>">Add to Cart</button>
                                 </div>
@@ -146,6 +147,14 @@ if(isset($_GET["type"])){
         const url = `fetch_item.php?type=${typeId}`;
         window.open(url, "_self");
     });
+
+    const quantity = document.getElementById("quantity");
+
+    function maxQuantity(element) {
+        if(element.value > 10){
+            element.value = 10;
+        }
+    }
 </script>
 <script src="../jquery/submitFeedback.js"></script>
 <script src="../jquery/addtocart.js"></script>
