@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 19, 2024 at 04:43 PM
+-- Generation Time: Jan 19, 2025 at 08:29 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -138,7 +138,10 @@ INSERT INTO `tbl_audit_log` (`log_user_id`, `log_username`, `log_user_type`, `lo
 (6, 'Jc  David', '2', '2024-11-19 02:39:26'),
 (6, 'Jc  David', '2', '2024-11-19 14:55:59'),
 (1, 'Jc Domingo David', '1', '2024-11-19 15:21:20'),
-(12, 'Christian  Miral', '1', '2024-11-19 15:23:18');
+(12, 'Christian  Miral', '1', '2024-11-19 15:23:18'),
+(1, 'Jc Domingo David', '1', '2024-11-21 10:33:02'),
+(1, 'Jc Domingo David', '1', '2025-01-19 06:28:29'),
+(7, 'Juan  David', '2', '2025-01-19 07:21:45');
 
 -- --------------------------------------------------------
 
@@ -202,16 +205,19 @@ CREATE TABLE `tbl_cart` (
   `receiver` varchar(255) NOT NULL,
   `sender` varchar(255) NOT NULL,
   `message` varchar(255) DEFAULT NULL,
-  `account_id` int(11) NOT NULL
+  `account_id` int(11) NOT NULL,
+  `item_check` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_cart`
 --
 
-INSERT INTO `tbl_cart` (`item_id`, `prod_id`, `prod_qnty`, `order_date`, `status_id`, `receiver`, `sender`, `message`, `account_id`) VALUES
-(19, 20, 1, '2024-11-19', 5, 'Elmer', 'Jovs', 'I love you', 12),
-(20, 4, 1, NULL, 1, 'Elmer', 'Jovs', 'asDAD', 1);
+INSERT INTO `tbl_cart` (`item_id`, `prod_id`, `prod_qnty`, `order_date`, `status_id`, `receiver`, `sender`, `message`, `account_id`, `item_check`) VALUES
+(19, 20, 1, '2024-11-19', 5, 'Elmer', 'Jovs', 'I love you', 12, 0),
+(20, 4, 1, '2024-11-21', 5, 'Elmer', 'Jovs', 'asDAD', 1, 0),
+(23, 4, 2, '2025-01-19', 3, 'Elmer', 'Jovs', 'none', 1, 1),
+(24, 13, 1, NULL, 1, 'Elmer', 'Jovs', 'None', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -343,7 +349,9 @@ CREATE TABLE `tbl_receipt` (
 INSERT INTO `tbl_receipt` (`receipt_id`, `account_id`, `receipt_img`, `receipt_number`, `deposit_amount`, `uploaded_date`, `sender_name`, `sender_address`) VALUES
 (28, 1, '670e543aac139.jpeg', '3212313131313', 120, '2024-10-15', 'Josh', 'Bayan'),
 (29, 2, '6718a6c996ddf.jpeg', '2134214213111', 4400, '2024-10-23', 'Ivan', 'Cubao'),
-(30, 12, '671a0b9121f2b.jpeg', '2134214213111', 900, '2024-10-24', 'Jopert', 'Bayan');
+(30, 12, '671a0b9121f2b.jpeg', '2134214213111', 900, '2024-10-24', 'Jopert', 'Bayan'),
+(31, 1, '673f0dd9b311b.jpeg', '3212313131313', 1500, '2024-11-21', 'Jc David', 'Bayan'),
+(32, 1, '678ca7c86cf6a.jpeg', '2134214213111', 3000, '2025-01-19', 'Jc David', 'Bayan');
 
 -- --------------------------------------------------------
 
@@ -541,7 +549,7 @@ ALTER TABLE `tbl_best_seller`
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tbl_item_feedback`
@@ -571,7 +579,7 @@ ALTER TABLE `tbl_product_type`
 -- AUTO_INCREMENT for table `tbl_receipt`
 --
 ALTER TABLE `tbl_receipt`
-  MODIFY `receipt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `receipt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `tbl_reports`
