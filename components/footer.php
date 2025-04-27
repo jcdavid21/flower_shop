@@ -20,17 +20,17 @@
                     <div class="footer-col">
                         <h4>Get Help</h4>
                         <ul>
-                            <li><a href="">About Us</a></li>
-                            <li><a href="">Privacy Policy</a></li>
-                            <li><a href="">Terms & Conditions</a></li>
-                            <li><a href="">Payment Terms / Payment Instructions</a></li>
+                            <li><a href="./aboutUs.php">About Us</a></li>
+                            <li><a href="./privacyPolicy.php">Privacy Policy</a></li>
+                            <li><a href="./terms.php">Terms & Conditions</a></li>
+                            <li><a href="./paymentPage.php">Payment Terms / Payment Instructions</a></li>
                         </ul>
                     </div>
 
                     <div class="footer-col">
                         <h4>Customer Service</h4>
                         <ul>
-                            <li><a href="">FAQ</a></li>
+                            <li><a href="./faqs.php">FAQ</a></li>
                         </ul>
                     </div>
 

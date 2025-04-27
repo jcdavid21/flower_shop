@@ -2,6 +2,27 @@
 require_once("../config/config.php");
 session_start();
 
+// Define the function outside of any loops
+function check_stocks($conn, $prod_id, $prod_qnty, $item_id){
+    $query = "SELECT prod_stocks FROM tbl_products WHERE prod_id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $prod_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $data = $result->fetch_assoc();
+    $stocks = $data["prod_stocks"];
+    if ($prod_qnty > $stocks) {
+        $updateDelete = "DELETE FROM tbl_cart WHERE item_id = ?";
+        $stmt = $conn->prepare($updateDelete);
+        $stmt->bind_param("i", $item_id);
+        $stmt->execute();
+
+        return false;
+    } else {
+        return true;
+    }
+}
+
 if (isset($_SESSION["user_id"])) {
     $user_id = $_SESSION["user_id"];
     $date = date('Y-m-d');
@@ -16,27 +37,6 @@ if (isset($_SESSION["user_id"])) {
         $prod_id = $data["prod_id"];
         $prod_qnty = $data["prod_qnty"];
         $item_id = $data["item_id"];
-
-        function check_stocks($conn, $prod_id, $prod_qnty, $item_id){
-            $query = "SELECT prod_stocks FROM tbl_products WHERE prod_id = ?";
-            $stmt = $conn->prepare($query);
-            $stmt->bind_param("i", $prod_id);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $data = $result->fetch_assoc();
-            $stocks = $data["prod_stocks"];
-            if ($prod_qnty > $stocks) {
-                $updateDelete = "DELETE FROM tbl_cart WHERE item_id = ?";
-                $stmt = $conn->prepare($updateDelete);
-                $stmt->bind_param("i", $item_id);
-                $stmt->execute();
-
-                return false;
-            } else {
-                
-                return true;
-            }
-        }
 
         if(!check_stocks($conn, $prod_id, $prod_qnty, $item_id)){
             $check = true;

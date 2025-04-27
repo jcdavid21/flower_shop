@@ -178,6 +178,16 @@ $('.add-btn').on('click', function() {
             });
             return;
         }
+
+        if(parseFloat(depositAmnt) > parseFloat(totalAmnt)){
+            Swal.fire({
+                title: "Invalid deposit amount",
+                text: "Deposit amount must not exceed the total amount.",
+                
+                showConfirmButton: true,
+            });
+            return;
+        }
         
         // Confirm pickup action
         Swal.fire({
@@ -204,7 +214,16 @@ $('.add-btn').on('click', function() {
                     processData: false,
                     success: function(response) {
                         if (response === 'success') {
-                            window.location.reload();
+                            Swal.fire({
+                                title: "Success!",
+                                text: "Your order has been placed successfully.",
+                                
+                                showConfirmButton: true,
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = "cart.php";
+                                }
+                            });
                         } else if(response === "stocks"){
                             Swal.fire({
                                 title: "Invalid stocks!",

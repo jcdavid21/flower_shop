@@ -1,7 +1,3 @@
-<?php require_once("../backend/config/config.php") ?>
-<?php 
-  session_start();
-?>
 <header>
     <div class="con">
         <div class="left-row">
@@ -10,8 +6,8 @@
                 <h1 style="font-family: 'Dancing Script', cursive; font-size: 40px; font-weight: bold; color: #FC819E; letter-spacing: 1px;">Maris Flower Shop</h1>
             </a>
             <!-- Search Bar -->
-             <form action="search_results.php" method="GET" class="search-bar">
-                <input type="text" name="query" placeholder="Search flowers..." required>
+            <form method="GET" action="search_results.php" class="search-bar">
+                <input type="text" name="query" placeholder="Search flowers..." id="search_bar" required>
                 <button type="submit"><i class="fa-solid fa-search"></i></button>
             </form>
         </div>

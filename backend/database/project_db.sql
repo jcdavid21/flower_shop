@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 19, 2025 at 08:29 AM
+-- Generation Time: Apr 27, 2025 at 03:19 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -141,7 +141,13 @@ INSERT INTO `tbl_audit_log` (`log_user_id`, `log_username`, `log_user_type`, `lo
 (12, 'Christian  Miral', '1', '2024-11-19 15:23:18'),
 (1, 'Jc Domingo David', '1', '2024-11-21 10:33:02'),
 (1, 'Jc Domingo David', '1', '2025-01-19 06:28:29'),
-(7, 'Juan  David', '2', '2025-01-19 07:21:45');
+(7, 'Juan  David', '2', '2025-01-19 07:21:45'),
+(1, 'Jc Domingo David', '1', '2025-04-27 10:00:56'),
+(4, 'Christian  Lugo', '2', '2025-04-27 12:59:31'),
+(1, 'Jc Domingo David', '1', '2025-04-27 13:01:09'),
+(1, 'Jc Domingo David', '1', '2025-04-27 13:04:13'),
+(4, 'Christian  Lugo', '2', '2025-04-27 13:10:21'),
+(1, 'Jc Domingo David', '1', '2025-04-27 13:12:43');
 
 -- --------------------------------------------------------
 
@@ -214,10 +220,8 @@ CREATE TABLE `tbl_cart` (
 --
 
 INSERT INTO `tbl_cart` (`item_id`, `prod_id`, `prod_qnty`, `order_date`, `status_id`, `receiver`, `sender`, `message`, `account_id`, `item_check`) VALUES
-(19, 20, 1, '2024-11-19', 5, 'Elmer', 'Jovs', 'I love you', 12, 0),
-(20, 4, 1, '2024-11-21', 5, 'Elmer', 'Jovs', 'asDAD', 1, 0),
-(23, 4, 2, '2025-01-19', 3, 'Elmer', 'Jovs', 'none', 1, 1),
-(24, 13, 1, NULL, 1, 'Elmer', 'Jovs', 'None', 1, 0);
+(26, 4, 1, '2025-04-27', 2, 'Elmer', 'Jovs', 'labyu', 1, 1),
+(27, 6, 1, '2025-04-27', 5, 'Elmer', 'Jovs', 'labyu ulit', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -283,7 +287,7 @@ INSERT INTO `tbl_products` (`prod_id`, `prod_name`, `prod_price`, `prod_type`, `
 (1, 'A life remembered', 2000, 2, 50, 'None', 'A life remembered.png'),
 (2, 'Beaming', 1400, 2, 50, '', 'beaming.png'),
 (3, 'Beautiful Farewell', 2500, 2, 50, '', 'Beautiful Farewell.png'),
-(4, 'Bliss', 1500, 1, 50, 'edit the product description', 'bliss.png'),
+(4, 'Bliss', 1500, 1, 47, 'edit the product description', 'bliss.png'),
 (5, 'Charm', 500, 1, 50, '', 'charm.png'),
 (6, 'Clarity', 900, 1, 50, '', 'clarity.png'),
 (7, 'Comfort of Bereaved', 5000, 2, 50, '', 'Comfort of Bereaved.png'),
@@ -303,7 +307,8 @@ INSERT INTO `tbl_products` (`prod_id`, `prod_name`, `prod_price`, `prod_type`, `
 (21, 'Rejoice', 1100, 1, 50, '', 'rejoice.png'),
 (22, 'Sincerity', 3000, 2, 50, '', 'Sincerity.png'),
 (23, 'Stunning', 2000, 1, 50, '', 'stunning.png'),
-(24, 'Touch of Heaven', 2500, 2, 50, '', 'Touch of Heaven.png');
+(24, 'Touch of Heaven', 2500, 2, 50, '', 'Touch of Heaven.png'),
+(26, 'Flower1', 200, 2, 50, NULL, 'receipt.jpeg');
 
 -- --------------------------------------------------------
 
@@ -347,11 +352,7 @@ CREATE TABLE `tbl_receipt` (
 --
 
 INSERT INTO `tbl_receipt` (`receipt_id`, `account_id`, `receipt_img`, `receipt_number`, `deposit_amount`, `uploaded_date`, `sender_name`, `sender_address`) VALUES
-(28, 1, '670e543aac139.jpeg', '3212313131313', 120, '2024-10-15', 'Josh', 'Bayan'),
-(29, 2, '6718a6c996ddf.jpeg', '2134214213111', 4400, '2024-10-23', 'Ivan', 'Cubao'),
-(30, 12, '671a0b9121f2b.jpeg', '2134214213111', 900, '2024-10-24', 'Jopert', 'Bayan'),
-(31, 1, '673f0dd9b311b.jpeg', '3212313131313', 1500, '2024-11-21', 'Jc David', 'Bayan'),
-(32, 1, '678ca7c86cf6a.jpeg', '2134214213111', 3000, '2025-01-19', 'Jc David', 'Bayan');
+(34, 1, '680e1e0170f40.jpeg', '2134214213111', 2400, '2025-04-27', 'Jc David', 'Bayan');
 
 -- --------------------------------------------------------
 
@@ -445,7 +446,9 @@ INSERT INTO `tbl_transactions` (`user_id`, `user_name`, `user_type`, `user_activ
 (7, 'juan', '3', 'Claimed item ', '2024-10-23', 17),
 (7, 'juan', '3', 'Claimed item NewJeans - NJ Supernatural Photocard SET 1', '2024-10-23', 17),
 (7, 'Juan David', '3', 'Claimed item Honor', '2024-10-24', 19),
-(6, 'Jc David', '2', 'Claimed item Honor', '2024-11-15', 19);
+(6, 'Jc David', '2', 'Claimed item Honor', '2024-11-15', 19),
+(1, 'Jc David', '1', 'Claimed item Bliss', '2025-04-27', 26),
+(1, 'Jc David', '1', 'Claimed item Bliss', '2025-04-27', 26);
 
 --
 -- Indexes for dumped tables
@@ -549,7 +552,7 @@ ALTER TABLE `tbl_best_seller`
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tbl_item_feedback`
@@ -567,7 +570,7 @@ ALTER TABLE `tbl_order_type`
 -- AUTO_INCREMENT for table `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `tbl_product_type`
@@ -579,7 +582,7 @@ ALTER TABLE `tbl_product_type`
 -- AUTO_INCREMENT for table `tbl_receipt`
 --
 ALTER TABLE `tbl_receipt`
-  MODIFY `receipt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `receipt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `tbl_reports`

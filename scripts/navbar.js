@@ -25,3 +25,30 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
+
+// Existing navbar.js code may be here
+
+// Add search functionality
+$(document).ready(function() {
+    // Handle search form submission
+    $('.search-bar').submit(function(e) {
+        const query = $('#search_bar').val().trim();
+        
+        // Validate search query
+        if (query === '') {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please enter a search term!'
+            });
+        }
+    });
+    
+    // Optional: Trigger search on Enter key press
+    $('#search_bar').keypress(function(e) {
+        if (e.which === 13) { // Enter key
+            $('.search-bar').submit();
+        }
+    });
+});

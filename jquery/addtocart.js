@@ -17,6 +17,22 @@ $(document).ready(() => {
                 return;
             }
 
+            if(qnty < 1){
+                Swal.fire({
+                    title: "Invalid Input",
+                    text: "Quantity must be at least 1.",
+                });
+                return;
+            }
+
+            if (qnty > 10) {
+                Swal.fire({
+                    title: "Invalid Input",
+                    text: "Quantity must be less than or equal to 10.",
+                });
+                return;
+            }
+
 
             $.ajax({
                 url: "../backend/user/addcart.php",

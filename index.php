@@ -22,8 +22,8 @@
                 <h1 style="font-family: 'Dancing Script', cursive; font-size: 40px; font-weight: bold; color: #FC819E; letter-spacing: 1px;">Maris Flower Shop</h1>
             </a>
             <!-- Search Bar -->
-             <form action="search_results.php" method="GET" class="search-bar">
-                <input type="text" name="query" placeholder="Search flowers..." required>
+            <form method="GET" action="./components/search_results.php" class="search-bar">
+                <input type="text" name="query" placeholder="Search flowers..." id="search_bar" required>
                 <button type="submit"><i class="fa-solid fa-search"></i></button>
             </form>
         </div>
@@ -187,10 +187,10 @@
                     <div class="footer-col">
                         <h4>Get Help</h4>
                         <ul>
-                            <li><a href="components/about.php">About Us</a></li>
-                            <li><a href="">Privacy Policy</a></li>
-                            <li><a href="">Terms & Conditions</a></li>
-                            <li><a href="">Payment Terms / Payment Instructions</a></li>
+                            <li><a href="components/aboutUs.php">About Us</a></li>
+                            <li><a href="components/privacyPolicy.php">Privacy Policy</a></li>
+                            <li><a href="components/terms.php">Terms & Conditions</a></li>
+                            <li><a href="components/paymentPage.php">Payment Terms / Payment Instructions</a></li>
                         </ul>
                     </div>
 

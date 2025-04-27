@@ -4,7 +4,7 @@
 
     if(isset($_POST["item_id"]) && isset($_POST["status_id"])){
         $item_id = $_POST["item_id"];
-        $cashier_id =  $_SESSION["admin_id"];
+        $cashier_id =  $_SESSION["user_id"];
         $status_id = $_POST["status_id"];
         $order_date = date('Y-m-d');
         $prod_name = '';
